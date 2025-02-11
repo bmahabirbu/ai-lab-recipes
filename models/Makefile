@@ -10,7 +10,7 @@ IMAGE ?= $(shell tr '[:upper:]' '[:lower:]' <<< $(REGISTRY)/$(REGISTRY_ORG)/$(MO
 
 .PHONY: build
 build:
-	"${CONTAINER_TOOL}"  build $(MODEL_URL:%=--build-arg MODEL_URL=%) -f Containerfile -t ${IMAGE} .
+	"${CONTAINER_TOOL}" build --no-cache --build-arg MODEL_URL=$(MODEL_URL) -f Containerfile -t ${IMAGE} 
 
 .PHONY: download-model
 download-model:
